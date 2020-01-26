@@ -15,7 +15,7 @@ parseArgs args
   | any ((==) "--version") pre = ["--version"]
   | otherwise = if length(pst) == 0 then pre else (++) pre $ tail pst
     where
-      (pre, pst) = break ((==) "==") args
+      (pre, pst) = break ((==) "--") args
 
 processName :: String -> IO (Data.Text.Text)
 processName "-" = Data.Text.IO.getContents
