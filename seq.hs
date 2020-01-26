@@ -20,8 +20,8 @@ data Sequence = Sequence { first :: Int
 
 parseArgs :: [String] -> Either String Sequence
 parseArgs [] = Left "seq: missing operand"
-parseArgs [lst] = parseArgs ["1.0", "1.0", lst]
-parseArgs [fst, lst] = parseArgs [fst, "1.0", lst]
+parseArgs [lst] = parseArgs ["1", "1", lst]
+parseArgs [fst, lst] = parseArgs [fst, "1", lst]
 parseArgs whole@[str1, str2, str3] = case zip whole $ map readMaybe whole of
     [(_, Just fst), (_, Just inc), (_, Just lst)] -> Right $ Sequence fst inc lst
     val -> Left $ "seq: invalid integral argument: " ++ firstBad
